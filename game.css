@@ -1,0 +1,85 @@
+/* styling the game.html; we style it to make the 
+choice-container flex, border and let margin be between them and we attached to them the transition effect (bx-shadow)
+of the home attached to the link on hover
+choice-prefix have a background of  */
+
+.choice-container {
+    display: flex;
+    border: 1px solid rgba(19, 115, 199, 0.25);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    background-color: white;
+}
+/* Next we style the choice-prefix give it a padding same for the opp sides background color 
+then we style the .choice-text 
+add a padding to it then yah! we add the hover state to the .choice-container */
+
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(85, 185, 235, 0.5);
+    text-shadow: 0 0.4rem 1.4rem rgba(85, 185, 235, 0.5);
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, .15);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+.choice-prefix {
+    padding: 1.5rem 2.5rem;
+    background-color: #565eeb;
+    color: white;
+}
+.choice-text {
+    padding: 1.5rem;
+    width: 100%;
+}
+.correct, .correct:hover {
+    border: 4px solid #4dcc7d;
+    background-color: #31b43a;
+    box-shadow: 0 0 10px #31b43a;
+}
+.incorrect, .incorrect:hover {
+    border: 4px solid #fc295b;
+    box-shadow: 0 0 10px #d01115;
+    background-color: #fc191b;
+}
+
+/* HUD */
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+}
+.hud-prefix {
+    text-align: center;
+    font-size: 2rem;
+}
+.hud-main-text {
+    text-align: center;
+}
+
+/* progress-bar */
+
+#progressBar {
+    width: 20rem;
+    height: 2.5rem;
+    border: 0.15rem solid #56a5eb;
+}
+#progressBarFull {
+    height: 2.25rem;
+    background-color: #56a5eb;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
