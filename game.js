@@ -7,12 +7,13 @@ const progressBarFullElement = document.getElementById('progressBarFull');
 const questionUrl = 'https://opentdb.com/api.php?amount=10&category=17&difficulty=easy&type=multiple';
 
 const CORRECT_BONUS = 10;
-const MAX_QUESTIONS = 5;
+const MAX_QUESTIONS = 10;
 
 let score = 0;
 let availableQuestions = [];
 let acceptingAnswers = true;
 let questionCounter = 0;
+let questionIndex;
 
 // Use comments to explain the purpose of each function and code block.
 
@@ -70,7 +71,7 @@ function getNewQuestion() {
 	progressTextElement.innerText = `Question: ${questionCounter}/${MAX_QUESTIONS}`;
 	progressBarFullElement.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
-	const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+	questionIndex = Math.floor(Math.random() * availableQuestions.length);
 	const currentQuestion = availableQuestions[questionIndex];
 	questionElement.innerText = currentQuestion.question;
 
@@ -83,7 +84,7 @@ function getNewQuestion() {
 		choiceElement.dataset.number = index; // set the data-number attribute for answer comparison
 	})
 
-	availableQuestions.splice(questionIndex, 1);
+	// availableQuestions.splice(questionIndex, 1);
 }
 
 // Handle answer selection
@@ -92,8 +93,14 @@ const handleAnswerSelection = (e) => {
 
 	acceptingAnswers = false;
 	const selectedChoice = e.target;
-	const selectedAnswer = selectedChoice.dataset['number'];
-	const isCorrect = selectedAnswer == availableQuestions[questionCounter - 1].correct_answer;
+	const selectedAnswerIndex = parseInt(selectedChoice.dataset['number'], 10);
+	const currentQuestion = availableQuestions[questionIndex];
+
+	console.log(availableQuestions)
+	console.log(currentQuestion)
+	console.log(selectedChoice.innerText)
+	
+	const isCorrect = selectedChoice.innerText == currentQuestion.correct_answer;
 
 	if (isCorrect) {
 		incrementScore(CORRECT_BONUS);
