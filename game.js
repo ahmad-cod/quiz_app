@@ -75,7 +75,7 @@ function getNewQuestion() {
 	questionElement.innerText = currentQuestion.question;
 
 	// Shuffle the answer choices and display them
-	const choices = [...currentQuestion.incorrect_answers, ...currentQuestion.correct_answer];
+	const choices = [...currentQuestion.incorrect_answers, currentQuestion.correct_answer];
 
 	shuffleArray(choices)
 	choiceElements.forEach((choiceElement, index) => {
